@@ -1,4 +1,4 @@
-// (function () {
+(function () {
     "use strict";
     //
     // let myPromise = new Promise(function(resolve, reject){
@@ -20,22 +20,25 @@
     //         console.log("error: " + error);
     //     }
     // );
-    // Diamonds	Бубны
-    // Hearts	Червы/черви
-    // Spades	Пики
-    // Clubs	Трефы
-    // Ace	Туз = 14
-    // King	Король = 13
-    // Queen	Дама = 12
-    // Jack	Валеt = 11
 
+    const COUNT_SUIT = 4;
+    const SUITS = ["hearts", "diamonds", "clubs", "spades"];
+    const VALUE_DECK = 36;
+    const MAX_VALUE_CARDS = 14;
+    const MIN_VALUE_CARDS = 6;
+    const VALUE_PLAYER = 2;
+
+
+    let deckCards = [];
+    let shuffleDeckCards = [];
     let player1 = [];
     let player2 = [];
+    let trump;
+    let cardUniqCounter = new Set();
 
-    // Example
-    let trump = "Hearts";
-
-
+    function getRandomVal(min, max) {
+        return Math.round(Math.random() * (max - min) + min);
+    }
     function setName(obj){
         let objName;
         if (obj.value < 11 && obj.value > 5) {
@@ -43,16 +46,16 @@
         } else if(obj.value > 10 && obj.value < 15) {
             switch (obj.value){
                 case 11:
-                    objName = "Jack";
+                    objName = "jack";
                     break;
                 case 12:
-                    objName = "Queen";
+                    objName = "queen";
                     break;
                 case 13:
-                    objName = "King";
+                    objName = "king";
                     break;
                 case 14:
-                    objName = "Ace";
+                    objName = "ace";
                     break;
             }
         }
@@ -63,48 +66,30 @@
     function setIsTrump(obj) {
         return obj.suit.toLowerCase() === trump.toLowerCase();
     }
-
-    function Card(name, suit, value, isTrump){
+    function Card(suit, value){
         this.suit = suit;
         this.value = value;
         this.isTramp = setIsTrump(this);
         this.name = setName(this);
     }
 
-    function getResults(){
-        console.log("player1's cards: " + player1);
-        console.log("player2's cards: " + player2);
+    function createDeck() {
+        for (let value = MIN_VALUE_CARDS; value <= MAX_VALUE_CARDS; value++){
+            for(let n = 0; n < SUITS.length; n++){
+                let card = new Card(SUITS[n], value);
+                deckCards.push(card);
+            }
+        }
     }
-    // Example
-let card = new Card("Jack", "Hearts", 11, false);
-
-
-
-// function createNewCard(){}
-
-// function  dealCards(){        getResults();}
-
-
-// document.querySelector(".get-cards").addEventListener("click", dealCards);
-
-
-    //
-    // let setCards = new Promise(function(resolve, reject){
-    //     document.querySelector(".btn-start").addEventListener("click", function(){
-    //         resolve(true);
-    //     });
-    // });
-    //
-    // setCards.then(
-    //     function(result){
-    //         if(result){
-    //             startGame();
-    //         }
-    //     },
-    //     function(error){
-    //         console.log("error: " + error);
-    //     }
-    // );
+    function shuffleCards(){
+        while(deckCards.length){
+            shuffleDeckCards = shuffleDeckCards.concat(deckCards.splice(getRandomVal(0, deckCards.length), 1));
+        }
+    }
+    function splitShuffleDeckCards(){
+        player1 = player1.concat(shuffleDeckCards.splice(0, VALUE_DECK/VALUE_PLAYER));
+        player2 = player2.concat(shuffleDeckCards.splice(0));
+    }
 
 
 
@@ -115,6 +100,16 @@ let card = new Card("Jack", "Hearts", 11, false);
 
 
 
+    function startGame() {
+        trump = SUITS[getRandomVal(0, COUNT_SUIT - 1)];
+        createDeck();
+        shuffleCards();
+        splitShuffleDeckCards();
+        console.log(player1);
+        console.log(player2);
+    }
+
+document.querySelector(".btn-start").addEventListener("click", startGame);
 
 
 
@@ -124,6 +119,4 @@ let card = new Card("Jack", "Hearts", 11, false);
 
 
 
-
-
-// }());
+}());
