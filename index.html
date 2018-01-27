@@ -3,10 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Game</title>
+    <link rel="stylesheet" href="style.less">
 </head>
 <body>
 <button class="btn btn-start">Начать игру</button>
-<div class="game-results"></div>
+<button class="btn show-row">Показать строку</button>
+<div class="wrapper">
+    <span>Winner:</span>
+    <span class="winner-name"></span>
+</div>
+<div class="wrapper">
+    <span>Score:</span>
+    <span class="score"></span>
+</div>
+<div class="wrapper">
+    <span>Suit:</span>
+    <span class="suit"></span>
+</div>
+<table>
+    <thead>
+    <tr>
+        <th class="name-player-1">Petia</th>
+        <th class="name-player-2">Vasia</th>
+    </tr>
+    </thead>
+    <tbody class="game-results">
+
+    </tbody>
+
+
+</table>
 <script src="main.js"></script>
 </body>
 </html>
