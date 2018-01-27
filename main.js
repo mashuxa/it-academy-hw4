@@ -1,4 +1,4 @@
-// (function () {
+ (function () {
 "use strict";
 
 
@@ -203,4 +203,4 @@ let myPromise = new Promise(function (resolve, reject) {
 
 
 
-// }());
+ }());
