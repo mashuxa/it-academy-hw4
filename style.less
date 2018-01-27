@@ -1,51 +1,123 @@
+html {
+    font-family: "Lato", sans-serif
+} 
 td {
-  min-width: 20px;
-  border: 1px dotted gray;
-  text-align: center;
+    min-width: 20px;
+    border: 1px dotted gray;
+    text-align: center;
 }
+
 table {
-  background-color: lightgrey;
-  width: 100%;}
-td:before {
-  content: '';
-  display: inline-block;
-  width: 100px;
-  height: 140px;
-  //background-color: #fff;
-  border-radius: 10px;
-  background-image: url("suits.svg");
-  background-size: 50px 50px;
-  background-position: 50% 50%;
-
+    margin: 20px 0;
+    background-color: lightgrey;
+    width: 100%;
 }
 
+td div {
+    position: relative;
+    display: inline-block;
+    margin: auto;
+    width: 100px;
+    height: 140px;
+    background-color: #fff;
+    border-radius: 10px;
+    background-size: 70%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    &:before,
+    &:after {
+        content: "dh";
+        position: absolute;
+        font-size: 25px;
+        font-weight: bold;
+    }
+    &:before {
+        left: 5px;
+        top: 5px;
+    }
+    &:after {
+        right: 5px;
+        bottom: 5px;
+        transform: rotate(180deg);
+    }
+    &.value-6 {
+        &:before,
+        &:after {
+            content: "6";
+        }
+    }
+    &.value-7 {
+        &:before,
+        &:after {
+            content: "7";
+        }
+    }
+    &.value-8 {
+        &:before, 
+        &:after {
+            content: "8";
+        }
+    }
+    &.value-9 {
+        &:before, 
+        &:after {
+            content: "9";
+        }
+    }
+    &.value-10 {
+        &:before,
+        &:after {
+            content: "10";
+        }
+    }
+    &.value-11 {
+        &:before, 
+        &:after {
+            content: "J";
+        }
+    }
+    &.value-12 {
+        &:before, 
+        &:after {
+            content: "Q";
+        }
+    }
+    &.value-13 {
+        &:before,
+        &:after {
+            content: "K";
+        }
+    }
+    &.value-14 {
+        &:before,
+        &:after {
+            content: "A";
+        }
+    }
+}
 
 .diamonds,
 .hearts {
-  color: red;
+    color: red;
 }
+
 .clubs,
 .spades {
-  color: black;
+    color: black;
 }
 
-.diamonds:before,
-.hearts:before,
-.clubs:before,
-.spades:before
-{
-
-
+.diamonds {
+    background-image: url("img/suit_03.jpg");
 }
-.diamonds:before  {
 
+.hearts {
+    background-image: url("img/suit_02.jpg");
 }
-.hearts  {
-  color: red;
-}
-.clubs  {
 
+.clubs {
+    background-image: url("img/suit_04.jpg");
 }
-.spades  {
-  color: black;
+
+.spades {
+    background-image: url("img/suit_01.jpg");
 }
