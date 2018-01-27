@@ -1,4 +1,4 @@
- (function () {
+ // (function () {
 "use strict";
 
 
@@ -166,7 +166,7 @@ let myPromise = new Promise(function (resolve, reject) {
         let i = playerDeckVal - 1;
 
         function showRow() {
-            if (!i) {
+            if (i < 0) {
                 return;
             }
 
@@ -203,4 +203,4 @@ let myPromise = new Promise(function (resolve, reject) {
 
 
 
- }());
+ // }());
