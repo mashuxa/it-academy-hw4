@@ -1,6 +1,5 @@
- // (function () {
+ (function () {
 "use strict";
-
 
 const COUNT_SUIT = 4;
 const SUITS = ["hearts", "diamonds", "clubs", "spades"];
@@ -8,7 +7,6 @@ const MAX_VALUE_CARDS = 14;
 const MIN_VALUE_CARDS = 6;
 const VALUE_DECK = 36;
 const VALUE_PLAYER = 2;
-
 
 let game;
 let playerDeckVal = VALUE_DECK / VALUE_PLAYER;
@@ -38,8 +36,6 @@ function setName(obj) {
         }
     }
     return obj.suit + "-" + objName;
-
-
 }
 
 function setIsTrump(obj) {
@@ -145,12 +141,6 @@ function printWinner() {
     document.querySelector(".suit").textContent = game.trump;
 }
 
-
-
-
-
-
-
 let myPromise = new Promise(function (resolve, reject) {
     document.querySelector(".btn-start").addEventListener("click", function () {
         game = new Game("Petia", "Vasia");
@@ -196,11 +186,4 @@ let myPromise = new Promise(function (resolve, reject) {
     }
 );
 
-
-
-
-
-
-
-
- // }());
+ }());
