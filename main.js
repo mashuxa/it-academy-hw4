@@ -104,26 +104,27 @@ function splitShuffleDeckCards() {
 
 function competeRaunds() {
     for (let i = playerDeckVal - 1; i >= 0; i--) {
-        let n = playerDeckVal - 1 - i;
         if (game.player1.deck[i].isTramp > game.player2.deck[i].isTramp) {
-            game.player1.score[n] = 1;
+            game.player1.score[i] = 1;
         } else if (game.player1.deck[i].isTramp < game.player2.deck[i].isTramp) {
-            game.player2.score[n] = 1;
+            game.player2.score[i] = 1;
         } else if (game.player1.deck[i].isTramp && game.player2.deck[i].isTramp) {
             if (game.player1.deck[i].value > game.player2.deck[i].value) {
-                game.player1.score[n] = 1;
+                game.player1.score[i] = 1;
             } else {
-                game.player2.score[n] = 1;
+                game.player2.score[i] = 1;
             }
 
         } else {
             if (game.player1.deck[i].value > game.player2.deck[i].value) {
-                game.player1.score[n] = 1;
+                game.player1.score[i] = 1;
             } else if (game.player1.deck[i].value < game.player2.deck[i].value) {
-                game.player2.score[n] = 1;
+                game.player2.score[i] = 1;
             }
         }
     }
+    game.player1.score.reverse();
+    game.player2.score.reverse();
 }
 
 function printWinner() {
